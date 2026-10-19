@@ -157,6 +157,12 @@ p {
     transition: opacity 2.4s ease, filter 2.4s ease, transform 2.4s ease;
 }
 
+.img_gallery.vertical {
+    max-height: calc(100vh - 12rem);
+    width: auto;
+    max-width: 60%;
+}
+
 .img_gallery.is-visible,
 .img_gallery__byn.is-visible,
 .caption_gallery.is-visible,
@@ -515,6 +521,31 @@ html::-webkit-scrollbar {
 .img_23__byn { grid-column: 4; grid-row: 43 / span 4; }
 .img_24__byn { grid-column: 2; grid-row: 46 / span 2; }
 .img_25__byn { grid-column: 1; grid-row: 48 / span 2; }
+.img_26__color { grid-column: 2; grid-row: 50 / span 2; }
+.img_27__color { grid-column: 4; grid-row: 51 / span 4; }
+.img_28__color { grid-column: 1; grid-row: 52 / span 2; }
+.img_29__color { grid-column: 3; grid-row: 54 / span 2; }
+.img_30__color { grid-column: 2; grid-row: 56 / span 2; }
+.img_31__color { grid-column: 1; grid-row: 58 / span 4; }
+.img_32__color { grid-column: 4; grid-row: 57 / span 2; }
+.img_33__color { grid-column: 3; grid-row: 59 / span 2; }
+.img_34__color { grid-column: 2; grid-row: 62 / span 2; }
+.img_35__color { grid-column: 4; grid-row: 64 / span 4; }
+.img_36__color { grid-column: 1; grid-row: 66 / span 2; }
+.img_37__color { grid-column: 3; grid-row: 68 / span 2; }
+.img_38__color { grid-column: 2; grid-row: 73 / span 2; }
+.img_39__color { grid-column: 1; grid-row: 75 / span 4; }
+.img_40__color { grid-column: 4; grid-row: 77 / span 2; }
+.img_41__color { grid-column: 3; grid-row: 80 / span 2; }
+.img_42__color { grid-column: 2; grid-row: 82 / span 4; }
+.img_43__color { grid-column: 4; grid-row: 85 / span 2; }
+.img_44__color { grid-column: 1; grid-row: 87 / span 2; }
+.img_45__color { grid-column: 3; grid-row: 90 / span 2; }
+.img_46__color { grid-column: 4; grid-row: 93 / span 4; }
+.img_47__color { grid-column: 1; grid-row: 95 / span 2; }
+.img_48__color { grid-column: 2; grid-row: 97 / span 2; }
+.img_49__color { grid-column: 3; grid-row: 100 / span 2; }
+.img_50__color { grid-column: 1; grid-row: 102 / span 2; }
 
 
 
@@ -769,7 +800,7 @@ html::-webkit-scrollbar {
   
     .vertical,
     .vertical__byn {
-        width: clamp(55%, 75vw, 59%);
+        width: clamp(70%, 80vw, 80%);
         max-width: unset;
     }
 

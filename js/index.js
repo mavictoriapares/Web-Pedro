@@ -171,21 +171,32 @@ window.addEventListener("scroll", () => {
 
 /* Funciones compartidas */
 function cambiarImagen(img, nuevoSrc, nuevoWebp, callback) {
+  img._token = (img._token || 0) + 1;
+  const miToken = img._token;
+
   img.style.transition = "opacity 0.2s ease";
   img.style.opacity = 0;
 
   setTimeout(() => {
+    if (miToken !== img._token) return;
+
     let picture = img.closest("picture");
     if (picture) {
       let source = picture.querySelector("source[type='image/webp']");
       if (source) source.srcset = nuevoWebp;
     }
 
-    img.src = nuevoSrc;
     img.onload = () => {
+      if (miToken !== img._token) return;
       callback(img);
-      img.style.opacity = 1;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          img.style.opacity = 1;
+        });
+      });
     };
+
+    img.src = nuevoSrc;
   }, 300);
 }
 
@@ -212,7 +223,7 @@ function ajustarTamañoByn(img) {
 
 
 /* GALERÍA FOTOS (COLOR) - Array de fotos (en webp) que se cambian al hacer click*/
-const imagenes = [
+/* const imagenes = [
   { src: "Media/grid_1_color.jpg", webp: "Media/optimizadas/grid_1_color.webp", numero: "01" },
   { src: "Media/grid_2_color.jpg", webp: "Media/optimizadas/grid_2_color.webp", numero: "02" },
   { src: "Media/grid_3_color.jpg", webp: "Media/optimizadas/grid_3_color.webp", numero: "03" },
@@ -238,7 +249,16 @@ const imagenes = [
   { src: "Media/grid_23_color.jpg", webp: "Media/optimizadas/grid_23_color.webp", numero: "23" },
   { src: "Media/grid_24_color.jpg", webp: "Media/optimizadas/grid_24_color.webp", numero: "24" },
   { src: "Media/grid_25_color.jpg", webp: "Media/optimizadas/grid_25_color.webp", numero: "25" }
-];
+]; */
+
+const imagenes = Array.from({ length: 50 }, (_, i) => {
+  const n = i + 1;
+  return {
+    src: `Media/grid_${n}_color.jpg`,
+    webp: `Media/optimizadas/grid_${n}_color_new.webp`,
+    numero: String(n).padStart(2, "0")
+  };
+});
 
 /* Variables */
 let indexIzquierda = 0;
@@ -376,3 +396,8 @@ window.addEventListener("DOMContentLoaded", () => {
 });
       
 })();
+
+/* QUITAR TOOLTIPS - Elimina el texto que sale al pasar el ratón por encima */
+document.querySelectorAll(".div_img img, .btn-gallery").forEach(el => {
+  el.removeAttribute("title");
+});
